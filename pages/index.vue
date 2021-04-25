@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-  TheLunchMenu(:week='week')
 </template>
 
 <script lang="ts">
@@ -8,13 +7,9 @@ import Vue from 'vue'
 
 export default Vue.extend({
   async asyncData({ $content }) {
-    const [week, pages] = await Promise.all([
-      $content('week').fetch(),
-      $content('pages').fetch(),
-    ])
+    const [pages] = await Promise.all([$content('pages').fetch()])
 
     return {
-      week,
       pages,
     }
   },

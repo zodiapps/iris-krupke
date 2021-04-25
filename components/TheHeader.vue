@@ -2,8 +2,7 @@
 header
   .container
     NuxtLink(to='/')
-      img(src='~/assets/logo.png', alt='Restaurang Stora Holm')
-    AppSocial.social(v-if='social', :data='social')
+      img(src='~/assets/logo.png', alt='Iris Krupke')
     AppHamburgerMenu.menu(:value='menu', @update='onMenuClick()')
 </template>
 
@@ -12,9 +11,6 @@ import Vue from 'vue'
 
 export default Vue.extend({
   props: {
-    social: {
-      type: Object,
-    },
     menu: {
       type: Boolean,
       default: false,
@@ -30,21 +26,13 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .container {
-  @apply mx-auto py-8 px-4 flex justify-between items-center border-b;
+  @apply mx-auto py-8 px-4 flex justify-between items-center;
 
   img {
     @apply flex-grow w-full max-w-sm;
   }
 
-  .social {
-    @apply hidden w-48 ml-4 self-end;
-
-    @screen md {
-      @apply flex;
-    }
-  }
-
-  button {
+  .menu {
     @apply ml-4 w-6 h-6;
 
     @screen md {

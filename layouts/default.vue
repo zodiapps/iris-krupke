@@ -1,6 +1,6 @@
 <template lang="pug">
 .min-h-screen.flex.flex-col
-  TheHeader(:menu='menu', :social='contact', @toggleMenu='onToggleMenu()')
+  TheHeader(:menu='menu', @toggleMenu='onToggleMenu()')
   TheSideNavigation(
     :show='menu',
     :navigation='navigation',
@@ -19,11 +19,9 @@ import Vue from 'vue'
 
 export default Vue.extend({
   async fetch() {
-    const [contact, navigation] = await Promise.all([
-      this.$content('contact').fetch(),
+    const [navigation] = await Promise.all([
       this.$content('navigation').fetch(),
     ])
-    this.contact = contact
     this.navigation = navigation
   },
   data() {
@@ -63,6 +61,10 @@ html {
 *::after {
   box-sizing: border-box;
   margin: 0;
+}
+
+body {
+  background-color: #f2ccea;
 }
 
 h1 {
